@@ -28,6 +28,8 @@ class TestTextNode(unittest.TestCase):
         node = TextNode("This is text node", TextType.TEXT, "https://arpit.dev")
         self.assertEqual("TextNode(This is text node, text, https://arpit.dev)", repr(node))
 
+class TestTextNodeToHTMLNode(unittest.TestCase):
+
     def test_text(self):
         node = TextNode("This is a text node", TextType.TEXT)
         html_node = text_node_to_html_node(node)
@@ -59,10 +61,14 @@ class TestTextNode(unittest.TestCase):
         self.assertEqual(html_node.value, "This is link text")
 
     def test_image(self):
-        node = TextNode("This is image text", TextType.IMAGE,)
+        node = TextNode("This is image text", TextType.IMAGE, "www")
         html_node = text_node_to_html_node(node)
         self.assertEqual(html_node.tag, "img")
-        self.assertEqual(html_node.value, "This is image value")
+        self.assertEqual(html_node.value, "")
+        self.assertEqual(
+                html_node.props,
+                {"src": "www", "alt": "This is image text"}
+                )
 
 
 if __name__ == "__main__":
