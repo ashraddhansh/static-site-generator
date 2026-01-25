@@ -37,8 +37,8 @@ def main():
         basepath = sys.argv[1]
 
 
-    copy_dir("/home/grayscaledev/Developer/github.com/static-site-generator/static/", "/home/grayscaledev/Developer/github.com/static-site-generator/public/")
+    copy_dir("/home/grayscaledev/Developer/github.com/static-site-generator/static/", "/home/grayscaledev/Developer/github.com/static-site-generator/docs/")
     start_path = "/home/grayscaledev/Developer/github.com/static-site-generator"
-    generate_pages_recursive(start_path + "/content/", start_path + "/template.html", start_path + "/public/", basepath)
+    generate_pages_recursive(start_path + "/content/", start_path + "/template.html", start_path + "/docs/", basepath)
 
 main()
