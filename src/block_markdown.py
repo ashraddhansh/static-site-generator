@@ -135,11 +135,11 @@ def markdown_to_html_node(markdown):
         items = block.split("\n")
         quote_lines = []
         for item in items:
-            cleaned_lines = item[2:]
-            quote_lines.append(cleaned_lines)
-        quote_text = "\n".join(quote_lines)
-        childern = text_to_children(quote_text)
-        return ParentNode("blockquote", childern)
+            cleaned_line = item[2:]
+            childern = text_to_children(cleaned_line)
+            p_node = ParentNode("p", childern)
+            quote_lines.append(p_node)
+        return ParentNode("blockquote", quote_lines)
 
     def to_para(block):
         block = block.replace("\n", " ")
